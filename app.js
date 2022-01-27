@@ -1,3 +1,20 @@
+const digits = document.querySelectorAll('.digit')
+const screen = document.querySelector('#screen')
+const actions = document.querySelectorAll('.action')
+const clear = document.querySelector('#clear')
+const comma = document.querySelector('#comma')
+const plusMinus = document.querySelector('#plusMinus')
+const erase = document.querySelector('#erase')
+const percent = document.querySelector('#percent')
+const opperateBtn = document.querySelector('#operate')
+
+let firstValue = 0;
+let secondValue = 0;
+let operation = '';
+let firstClickAfterAction = false;
+let operationRan = false;
+
+
 function add(a, b) {
    return Math.round(((a + b) + Number.EPSILON) * 100000) / 100000
 }
@@ -11,7 +28,6 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-   console.log(`a: ${a}, b: ${b}`)
    return Math.round(((a / b) + Number.EPSILON) * 100000) / 100000
 
 }
@@ -21,23 +37,13 @@ function operate(action, a, b) {
 }
 
 
-const digits = document.querySelectorAll('.digit')
-const screen = document.querySelector('#screen')
-let firstValue = 0;
-let secondValue = 0;
-let operation = '';
-let firstClickAfterAction = false;
-let operationRan = false;
 
 digits.forEach(digit => {
    digit.addEventListener('click', (e) => {
-      if (screen.innerText === '0') {
+      if (screen.innerText === '0' || operationRan) {
          screen.innerText = ''
       }
-      if (operationRan) {
-         reset()
-         screen.innerText = ''
-      }
+
       if (!operation) {
          screen.innerText += e.target.innerText;
          firstValue = Number(screen.innerText)
@@ -49,16 +55,10 @@ digits.forEach(digit => {
          screen.innerText += e.target.innerText;
          secondValue = Number(screen.innerText);
       }
-      console.log('firstValue :', firstValue)
-      console.log('secondValue :', secondValue)
-      console.log('operation :', operation)
-      console.log('operationRan :', operationRan)
-      console.log('firstClickAfterAction :', firstClickAfterAction)
-
    })
 })
 
-const actions = document.querySelectorAll('.action')
+
 actions.forEach(action => {
    action.addEventListener('click', (e) => {
       if (!firstClickAfterAction) {
@@ -69,17 +69,11 @@ actions.forEach(action => {
          calculate(e)
          operation = e.target.innerText
       }
-      console.log('firstValue :', firstValue)
-      console.log('secondValue :', secondValue)
-      console.log('operation :', operation)
-      console.log('operationRan :', operationRan)
-      console.log('firstClickAfterAction :', firstClickAfterAction)
    })
 })
 
-const opperateBtn = document.querySelector('#operate')
-opperateBtn.addEventListener('click', calculate)
 
+opperateBtn.addEventListener('click', calculate)
 
 function calculate(e) {
    if (operation) {
@@ -103,18 +97,15 @@ function calculate(e) {
       operationRan = true;
       firstValue = Number(screen.innerText);
       secondValue = Number(screen.innerText);
-      comma.disabled = false
-      console.log('firstValue :', firstValue)
-      console.log('secondValue :', secondValue)
-      console.log('operation :', operation)
-      console.log('operationRan :', operationRan)
-      console.log('firstClickAfterAction :', firstClickAfterAction)
+      comma.disabled = false;
    }
 }
 
 
 
-const clear = document.querySelector('#clear')
+
+
+
 
 clear.addEventListener('click', reset)
 
@@ -129,7 +120,6 @@ function reset() {
 }
 
 
-const comma = document.querySelector('#comma')
 
 comma.addEventListener('click', (e) => {
    screen.innerText += '.'
@@ -137,7 +127,6 @@ comma.addEventListener('click', (e) => {
 })
 
 
-const plusMinus = document.querySelector('#plusMinus')
 
 plusMinus.addEventListener('click', () => {
    screen.innerText = Number(screen.innerText) * (-1)
@@ -145,12 +134,32 @@ plusMinus.addEventListener('click', () => {
       firstValue *= -1
    else
       secondValue *= -1
-   console.log('firstValue :', firstValue);
-   console.log('secondValue :', secondValue);
-   console.log('operation :', operation);
-   console.log('operationRan :', operationRan);
-   console.log('firstClickAfterAction :', firstClickAfterAction);
+
 })
+
+
+
+
+erase.addEventListener('click', () => {
+   screen.innerText = screen.innerText.slice(0, screen.innerText.length - 1);
+   if (!firstClickAfterAction)
+      firstValue = Number(screen.innerText);
+   else
+      secondValue = Number(screen.innerText);
+
+})
+
+
+
+percent.addEventListener('click', () => {
+   operation = "/"
+   firstValue = Number(screen.innerText);
+   secondValue = 100
+   calculate()
+
+})
+
+
 
 // console.log('firstValue :', firstValue)
 // console.log('secondValue :', secondValue)
