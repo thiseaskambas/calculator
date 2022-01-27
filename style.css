@@ -79,6 +79,7 @@ button:last-child{
    justify-content: flex-end;
 }
 
+#operate:active,
 button:active,
 .digit:active, 
 #comma:active, 

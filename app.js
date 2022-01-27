@@ -40,10 +40,13 @@ function operate(action, a, b) {
 
 digits.forEach(digit => {
    digit.addEventListener('click', (e) => {
-      if (screen.innerText === '0' || operationRan) {
+      if (screen.innerText === '0') {
          screen.innerText = ''
       }
-
+      if (operationRan) {
+         reset()
+         screen.innerText = ''
+      }
       if (!operation) {
          screen.innerText += e.target.innerText;
          firstValue = Number(screen.innerText)
@@ -55,7 +58,14 @@ digits.forEach(digit => {
          screen.innerText += e.target.innerText;
          secondValue = Number(screen.innerText);
       }
+
+      console.log('firstValue :', firstValue)
+      console.log('secondValue :', secondValue)
+      console.log('operation :', operation)
+      console.log('operationRan :', operationRan)
+      console.log('firstClickAfterAction :', firstClickAfterAction)
    })
+
 })
 
 
@@ -69,7 +79,14 @@ actions.forEach(action => {
          calculate(e)
          operation = e.target.innerText
       }
+
+      console.log('firstValue :', firstValue)
+      console.log('secondValue :', secondValue)
+      console.log('operation :', operation)
+      console.log('operationRan :', operationRan)
+      console.log('firstClickAfterAction :', firstClickAfterAction)
    })
+
 })
 
 
@@ -98,6 +115,12 @@ function calculate(e) {
       firstValue = Number(screen.innerText);
       secondValue = Number(screen.innerText);
       comma.disabled = false;
+
+      console.log('firstValue :', firstValue)
+      console.log('secondValue :', secondValue)
+      console.log('operation :', operation)
+      console.log('operationRan :', operationRan)
+      console.log('firstClickAfterAction :', firstClickAfterAction)
    }
 }
 
@@ -117,6 +140,12 @@ function reset() {
    firstClickAfterAction = false;
    operationRan = false;
    comma.disabled = false;
+
+   console.log('firstValue :', firstValue)
+   console.log('secondValue :', secondValue)
+   console.log('operation :', operation)
+   console.log('operationRan :', operationRan)
+   console.log('firstClickAfterAction :', firstClickAfterAction)
 }
 
 
