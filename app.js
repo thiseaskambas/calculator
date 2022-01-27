@@ -49,11 +49,11 @@ digits.forEach(digit => {
          screen.innerText += e.target.innerText;
          secondValue = Number(screen.innerText);
       }
-      console.log('operation: ', operation)
-      console.log('firstValue: ', firstValue)
-      console.log('secondValue: ', secondValue)
-      console.log(firstClickAfterAction)
-      console.log(operationRan)
+      console.log('firstValue :', firstValue)
+      console.log('secondValue :', secondValue)
+      console.log('operation :', operation)
+      console.log('operationRan :', operationRan)
+      console.log('firstClickAfterAction :', firstClickAfterAction)
 
    })
 })
@@ -64,15 +64,16 @@ actions.forEach(action => {
       if (!firstClickAfterAction) {
          operation = e.target.innerText
          secondValue = Number(screen.innerText);
+         comma.disabled = false
       } else if (firstClickAfterAction) {
          calculate(e)
          operation = e.target.innerText
       }
-      console.log('operation: ', operation)
-      console.log('firstValue: ', firstValue)
-      console.log('secondValue: ', secondValue)
-      console.log(firstClickAfterAction)
-      console.log(operationRan)
+      console.log('firstValue :', firstValue)
+      console.log('secondValue :', secondValue)
+      console.log('operation :', operation)
+      console.log('operationRan :', operationRan)
+      console.log('firstClickAfterAction :', firstClickAfterAction)
    })
 })
 
@@ -102,21 +103,16 @@ function calculate(e) {
       operationRan = true;
       firstValue = Number(screen.innerText);
       secondValue = Number(screen.innerText);
-
-      console.log('operation: ', operation)
-      console.log('firstValue: ', firstValue)
-      console.log('secondValue: ', secondValue)
-      console.log(firstClickAfterAction)
-      console.log(operationRan)
-
+      comma.disabled = false
+      console.log('firstValue :', firstValue)
+      console.log('secondValue :', secondValue)
+      console.log('operation :', operation)
+      console.log('operationRan :', operationRan)
+      console.log('firstClickAfterAction :', firstClickAfterAction)
    }
 }
 
-// console.log('operation: ', operation)
-// console.log('firstValue: ', firstValue)
-// console.log('secondValue: ', secondValue)
-// console.log(firstClickAfterAction)
-// console.log(operationRan)
+
 
 const clear = document.querySelector('#clear')
 
@@ -129,16 +125,35 @@ function reset() {
    screen.innerText = '0';
    firstClickAfterAction = false;
    operationRan = false;
+   comma.disabled = false;
 }
 
 
 const comma = document.querySelector('#comma')
 
-comma.addEventListener('click', () => {
+comma.addEventListener('click', (e) => {
    screen.innerText += '.'
-   console.log('operation: ', operation)
-   console.log('firstValue: ', firstValue)
-   console.log('secondValue: ', secondValue)
-   console.log(firstClickAfterAction)
-   console.log(operationRan)
+   comma.disabled = true
 })
+
+
+const plusMinus = document.querySelector('#plusMinus')
+
+plusMinus.addEventListener('click', () => {
+   screen.innerText = Number(screen.innerText) * (-1)
+   if (!firstClickAfterAction)
+      firstValue *= -1
+   else
+      secondValue *= -1
+   console.log('firstValue :', firstValue);
+   console.log('secondValue :', secondValue);
+   console.log('operation :', operation);
+   console.log('operationRan :', operationRan);
+   console.log('firstClickAfterAction :', firstClickAfterAction);
+})
+
+// console.log('firstValue :', firstValue)
+// console.log('secondValue :', secondValue)
+// console.log('operation :', operation)
+// console.log('operationRan :', operationRan)
+// console.log('firstClickAfterAction :', firstClickAfterAction)
