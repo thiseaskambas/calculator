@@ -59,11 +59,6 @@ digits.forEach(digit => {
          secondValue = Number(screen.innerText);
       }
 
-      console.log('firstValue :', firstValue)
-      console.log('secondValue :', secondValue)
-      console.log('operation :', operation)
-      console.log('operationRan :', operationRan)
-      console.log('firstClickAfterAction :', firstClickAfterAction)
    })
 
 })
@@ -80,11 +75,6 @@ actions.forEach(action => {
          operation = e.target.innerText
       }
 
-      console.log('firstValue :', firstValue)
-      console.log('secondValue :', secondValue)
-      console.log('operation :', operation)
-      console.log('operationRan :', operationRan)
-      console.log('firstClickAfterAction :', firstClickAfterAction)
    })
 
 })
@@ -116,11 +106,6 @@ function calculate(e) {
       secondValue = Number(screen.innerText);
       comma.disabled = false;
 
-      console.log('firstValue :', firstValue)
-      console.log('secondValue :', secondValue)
-      console.log('operation :', operation)
-      console.log('operationRan :', operationRan)
-      console.log('firstClickAfterAction :', firstClickAfterAction)
    }
 }
 
@@ -141,11 +126,6 @@ function reset() {
    operationRan = false;
    comma.disabled = false;
 
-   console.log('firstValue :', firstValue)
-   console.log('secondValue :', secondValue)
-   console.log('operation :', operation)
-   console.log('operationRan :', operationRan)
-   console.log('firstClickAfterAction :', firstClickAfterAction)
 }
 
 
@@ -192,20 +172,3 @@ percent.addEventListener('click', () => {
    calculate()
 
 })
-
-
-
-
-
-
-
-
-
-
-
-
-// console.log('firstValue :', firstValue)
-// console.log('secondValue :', secondValue)
-// console.log('operation :', operation)
-// console.log('operationRan :', operationRan)
-// console.log('firstClickAfterAction :', firstClickAfterAction)
