@@ -24,7 +24,7 @@ const screen = document.querySelector('#screen')
 let firstValue = 0;
 let secondValue = 0;
 let operation = '';
-let firstClickAfterAction = true;
+let firstClickAfterAction = false;
 
 digits.forEach(digit => {
    digit.addEventListener('click', (e) => {
@@ -33,30 +33,34 @@ digits.forEach(digit => {
       }
       if (!operation) {
          screen.innerText += e.target.innerText;
-      } else if (firstClickAfterAction) {
+      } else if (!firstClickAfterAction) {
          screen.innerText = e.target.innerText;
-         firstClickAfterAction = false
+         firstClickAfterAction = true
       } else {
          screen.innerText += e.target.innerText;
       }
+      console.log('operation: ', operation)
+      console.log('firstValue: ', firstValue)
+      console.log('secondValue: ', secondValue)
+      console.log(firstClickAfterAction)
    })
 })
 
 const actions = document.querySelectorAll('.action')
 actions.forEach(action => {
    action.addEventListener('click', (e) => {
-      if (!firstValue) {
-         firstValue = Number(screen.innerText);
+      if (!firstClickAfterAction) {
          operation = e.target.innerText
-      } else {
+         firstValue = Number(screen.innerText);
+      } else if (firstClickAfterAction) {
          calculate(e)
          operation = e.target.innerText
       }
       console.log('operation: ', operation)
       console.log('firstValue: ', firstValue)
       console.log('secondValue: ', secondValue)
+      console.log(firstClickAfterAction)
    })
-
 })
 
 const opperateBtn = document.querySelector('#operate')
@@ -64,7 +68,8 @@ opperateBtn.addEventListener('click', calculate)
 
 
 function calculate(e) {
-   secondValue = Number(screen.innerText);
+   if (firstValue)
+      secondValue = Number(screen.innerText);
    switch (operation) {
       case '/':
          screen.innerText = operate(divide, firstValue, secondValue);
@@ -81,7 +86,8 @@ function calculate(e) {
    }
    operation = '';
    firstValue = Number(screen.innerText);
-   firstClickAfterAction = true
+   firstClickAfterAction = false
+
 }
 
 // console.log('operation: ', operation)
