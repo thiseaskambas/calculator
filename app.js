@@ -44,8 +44,8 @@ digits.forEach(digit => {
          screen.innerText = ''
       }
       if (operationRan) {
-         reset()
          screen.innerText = ''
+         operationRan = false;
       }
       if (!operation) {
          screen.innerText += e.target.innerText;
