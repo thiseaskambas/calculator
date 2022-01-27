@@ -49,7 +49,11 @@ digits.forEach(digit => {
          screen.innerText += e.target.innerText;
          secondValue = Number(screen.innerText);
       }
-
+      console.log('operation: ', operation)
+      console.log('firstValue: ', firstValue)
+      console.log('secondValue: ', secondValue)
+      console.log(firstClickAfterAction)
+      console.log(operationRan)
 
    })
 })
@@ -64,7 +68,11 @@ actions.forEach(action => {
          calculate(e)
          operation = e.target.innerText
       }
-
+      console.log('operation: ', operation)
+      console.log('firstValue: ', firstValue)
+      console.log('secondValue: ', secondValue)
+      console.log(firstClickAfterAction)
+      console.log(operationRan)
    })
 })
 
@@ -95,6 +103,11 @@ function calculate(e) {
       firstValue = Number(screen.innerText);
       secondValue = Number(screen.innerText);
 
+      console.log('operation: ', operation)
+      console.log('firstValue: ', firstValue)
+      console.log('secondValue: ', secondValue)
+      console.log(firstClickAfterAction)
+      console.log(operationRan)
 
    }
 }
@@ -116,5 +129,16 @@ function reset() {
    screen.innerText = '0';
    firstClickAfterAction = false;
    operationRan = false;
-
 }
+
+
+const comma = document.querySelector('#comma')
+
+comma.addEventListener('click', () => {
+   screen.innerText += '.'
+   console.log('operation: ', operation)
+   console.log('firstValue: ', firstValue)
+   console.log('secondValue: ', secondValue)
+   console.log(firstClickAfterAction)
+   console.log(operationRan)
+})
