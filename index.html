@@ -6,48 +6,49 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <script src="app.js" defer></script>
+   <link rel="stylesheet" href="normalize.css">
+   <link rel="stylesheet" href="style.css">
    <title>Calculator Project</title>
 </head>
 
 <body>
    <main id="container">
-      <div id="screen">
-         0
-      </div>
+      <section>
+         <div id="screen">
+            0
+         </div>
+      </section>
       <div id="pad">
-         <section>
+         <section class="toprow row">
             <button id="clear">AC</button>
             <button id="plusMinus">+/-</button>
             <button id="percent">%</button>
             <button class="action">/</button>
-
          </section>
-         <section>
+         <section class="row">
             <button class="digit">7</button>
             <button class="digit">8</button>
             <button class="digit">9</button>
             <button class="action">*</button>
-
          </section>
-         <section>
+         <section class="row">
             <button class="digit">4</button>
             <button class="digit">5</button>
             <button class="digit">6</button>
             <button class="action">+</button>
          </section>
-         <section>
+         <section class="row">
             <button class="digit">1</button>
             <button class="digit">2</button>
             <button class="digit">3</button>
             <button class="action">-</button>
          </section>
-         <section>
+         <section class="row">
             <button class="digit">0</button>
             <button id="comma">.</button>
-            <button id="erase">del.</button>
+            <button id="erase">&#9003;</button>
             <button id="operate">=</button>
          </section>
-
       </div>
    </main>
 </body>

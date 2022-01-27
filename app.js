@@ -1,12 +1,12 @@
-const digits = document.querySelectorAll('.digit')
-const screen = document.querySelector('#screen')
-const actions = document.querySelectorAll('.action')
-const clear = document.querySelector('#clear')
-const comma = document.querySelector('#comma')
-const plusMinus = document.querySelector('#plusMinus')
-const erase = document.querySelector('#erase')
-const percent = document.querySelector('#percent')
-const opperateBtn = document.querySelector('#operate')
+const digits = document.querySelectorAll('.digit');
+const screen = document.querySelector('#screen');
+const actions = document.querySelectorAll('.action');
+const clear = document.querySelector('#clear');
+const comma = document.querySelector('#comma');
+const plusMinus = document.querySelector('#plusMinus');
+const erase = document.querySelector('#erase');
+const percent = document.querySelector('#percent');
+const opperateBtn = document.querySelector('#operate');
 
 let firstValue = 0;
 let secondValue = 0;
@@ -141,12 +141,17 @@ plusMinus.addEventListener('click', () => {
 
 
 erase.addEventListener('click', () => {
-   screen.innerText = screen.innerText.slice(0, screen.innerText.length - 1);
-   if (!firstClickAfterAction)
-      firstValue = Number(screen.innerText);
-   else
-      secondValue = Number(screen.innerText);
+   if (screen.innerText.length === 1) {
+      screen.innerText = 0
+   } else {
+      screen.innerText = screen.innerText.slice(0, screen.innerText.length - 1);
+   }
 
+   if (!firstClickAfterAction) {
+      firstValue = Number(screen.innerText);
+   } else {
+      secondValue = Number(screen.innerText);
+   }
 })
 
 
@@ -158,6 +163,15 @@ percent.addEventListener('click', () => {
    calculate()
 
 })
+
+
+
+
+
+
+
+
+
 
 
 
