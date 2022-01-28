@@ -1,6 +1,7 @@
 const digits = document.querySelectorAll('.digit');
 const screen = document.querySelector('#screen');
 const actions = document.querySelectorAll('.action');
+
 const clear = document.querySelector('#clear');
 const comma = document.querySelector('#comma');
 const plusMinus = document.querySelector('#plusMinus');
@@ -36,6 +37,11 @@ function operate(action, a, b) {
    return action(a, b)
 }
 
+function resetActiveButton() {
+   let active = document.querySelector('#active');
+   if (active)
+      active.id = ""
+}
 
 
 digits.forEach(digit => {
@@ -54,9 +60,11 @@ digits.forEach(digit => {
          screen.innerText = e.target.innerText
          secondValue = Number(screen.innerText);
          firstClickAfterAction = true
+
       } else {
          screen.innerText += e.target.innerText;
          secondValue = Number(screen.innerText);
+
       }
 
    })
@@ -70,6 +78,8 @@ actions.forEach(action => {
          operation = e.target.innerText
          secondValue = Number(screen.innerText);
          comma.disabled = false
+         resetActiveButton()
+         e.target.id = "active"
       } else if (firstClickAfterAction) {
          calculate(e)
          operation = e.target.innerText
@@ -105,6 +115,7 @@ function calculate(e) {
       firstValue = Number(screen.innerText);
       secondValue = Number(screen.innerText);
       comma.disabled = false;
+      resetActiveButton()
 
    }
 }
@@ -125,7 +136,7 @@ function reset() {
    firstClickAfterAction = false;
    operationRan = false;
    comma.disabled = false;
-
+   resetActiveButton()
 }
 
 
@@ -172,3 +183,4 @@ percent.addEventListener('click', () => {
    calculate()
 
 })
+

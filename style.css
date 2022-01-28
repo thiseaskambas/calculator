@@ -51,7 +51,6 @@ button:last-child{
    border-right: none;
 }
  
-
 .toprow button{
    background-color: #57606f;
    color: #f1f2f6
@@ -59,6 +58,10 @@ button:last-child{
 .action{
    background-color: #ffa502;
    color: #f1f2f6
+}
+
+#active{
+   background-color: #e67e22;
 }
 
 .digit, #comma, #erase{
