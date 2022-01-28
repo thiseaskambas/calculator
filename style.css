@@ -40,7 +40,7 @@ button{
    margin: 0;
    box-shadow: none;
    border: none;
-   font-size: 2.5rem;
+   font-size: 2rem;
    flex-grow: 1;
    max-width: 25%;
    padding: 6px 10px;
@@ -86,4 +86,15 @@ button:active,
 #erase:active,
 .action:active{
    background-color:#eccc68;
+}
+
+#operate:hover,
+button:hover,
+.digit:hover, 
+#comma:hover, 
+#erase:hover,
+.action:hover{
+   filter: brightness(0.9);
+   cursor: grab;
+   transition: 150ms;
 }
